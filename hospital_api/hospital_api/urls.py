@@ -15,8 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import get_user_model
+from django.http import HttpResponse
+
+def create_superuser(request):
+    User = get_user_model()
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@example.com', 'admin1234')
+        return HttpResponse('Superuser created: admin / admin1234')
+    return HttpResponse('Superuser already exists')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('core.urls')),
+    path('create-su/', create_superuser),  # TEMP: Remove after use
 ]
