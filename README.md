@@ -2,6 +2,10 @@
 
 A Django REST Framework project for managing patients and medical records in a hospital setting. Built for assignment purposes.
 
+![image](https://github.com/user-attachments/assets/24857ef4-d17a-463a-b449-ac34e89564cd)
+---
+![image](https://github.com/user-attachments/assets/fec57fce-5b70-4392-879a-530fb32ac16b)
+
 ## Tech Stack
 - Python 3
 - Django 4+
@@ -67,6 +71,3 @@ python hospital_api/manage.py test core
 - All endpoints require JWT authentication except signup/login.
 - Doctors can only access their own patients and records.
 - Admins (superusers) can access all data.
-
-## License
-MIT 
