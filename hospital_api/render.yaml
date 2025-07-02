@@ -1,2 +1,11 @@
-startCommand: gunicorn hospital_api.wsgi:application
-buildCommand: pip install -r requirements.txt && python hospital_api/manage.py migrate && python hospital_api/manage.py collectstatic --noinput
+services:
+  - type: web
+    name: hospital-api
+    env: python
+    buildCommand: pip install -r requirements.txt && python hospital_api/manage.py migrate && python hospital_api/manage.py collectstatic --noinput
+    startCommand: gunicorn hospital_api.hospital_api.wsgi:application
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: DJANGO_SETTINGS_MODULE
+        value: hospital_api.settings
